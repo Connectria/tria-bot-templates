@@ -1,0 +1,42 @@
+{
+    "uuid": "tria.scheduled_instances",
+    "category": "Optimization",
+    "name": "Scheduled Instances",
+    "description": "Scheduled instance stop/start across one or more clouds/resource groups",
+    "instructions": {
+        "filters": [
+            {
+                "config": {},
+                "name": "divvy.filter.always_match"
+            }
+        ],
+        "actions": [
+            {
+                "run_when_result_is": true,
+                "config": {
+                    "hour": 0,
+                    "minute": 20,
+                    "timezone": "UTC",
+                    "exclude_days": ["6","7"]
+                 },
+                "name": "divvy.action.periodic_stop"
+            },
+            {
+                "run_when_result_is": true,
+                "config": {
+                    "hour": 10,
+                    "minute": 0,
+                    "timezone": "UTC",
+                    "exclude_days": ["6","7"]
+                },
+                "name": "divvy.action.periodic_start"
+            }
+        ],
+        "groups": [],
+        "hookpoints": ["divvycloud.resource.created"],
+        "resource_types": [
+            "instance"
+        ],
+        "ondemand_enabled": true
+    }
+}

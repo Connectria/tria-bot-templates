@@ -1,0 +1,32 @@
+{
+    "uuid": "tria.unattached_volumes",
+    "name": "Volumes Unattached",
+    "category": "Optimization",
+    "description": "Identifies unattached volumes",
+    "instructions": {
+        "actions": [
+            {
+                "config": {},
+                "name": "divvy.action.mark_non_compliant",
+                "run_when_result_is": true
+            }
+        ],
+        "filters": [
+            {
+                "config": {},
+                "name": "divvy.filter.orphaned_volume"
+            }
+        ],
+        "groups": [],
+        "hookpoints": [],
+        "ondemand_enabled": true,
+        "resource_types": [
+            "volume"
+        ],
+        "schedule": {
+            "_type": "Daily",
+            "time_of_day": {"_type": "TimeOfDay", "second": 0, "minute": 0, "hour": 4},
+            "exclude_days": []
+        }
+    }
+}

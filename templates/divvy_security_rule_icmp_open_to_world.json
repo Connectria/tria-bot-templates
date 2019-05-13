@@ -1,0 +1,59 @@
+{
+    "uuid": "tria.security_rule_icmp_open_to_world",
+    "name": "Global ICMP open to the world",
+    "category": "Security",
+    "description": "Identify ICMP open to the world",
+    "instructions": {
+        "actions": [
+            {
+                "config": {},
+                "name": "divvy.action.mark_non_compliant",
+                "run_when_result_is": true
+            }
+        ],
+        "filters": [
+            {
+                "config": {
+                    "direction": [
+                        "ingress"
+                    ]
+                },
+                "name": "divvy.filter.access_rule_direction"
+            },
+            {
+                "config": {
+                    "access_list_types": [
+                        "security_group",
+                        "network_acl"
+                    ]
+                },
+                "name": "divvy.filter.access_list_type"
+            },
+            {
+                "config": {
+                    "protocols": [
+                        "icmp",
+                        "all"
+                    ]
+                },
+                "name": "divvy.filter.access_rule_ip_protocol"
+            },
+            {
+                "config": {
+                    "action": "allow"
+                },
+                "name": "divvy.filter.access_rule_action"
+            },
+            {
+                "config": {},
+                "name": "divvy.filter.network_open_to_world"
+            }
+        ],
+        "groups": [],
+        "hookpoints": ["divvycloud.resource.created"],
+        "ondemand_enabled": true,
+        "resource_types": [
+            "resourceaccesslistrule"
+        ]
+    }
+}

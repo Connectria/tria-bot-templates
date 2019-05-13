@@ -1,0 +1,32 @@
+{
+    "uuid": "tria.clouds_without_root_mfa",
+    "name": "Clouds Without Protected Root Account",
+    "category": "Security",
+    "description": "Identify accounts which still have the root account and it is not two-factor enabled",
+    "instructions": {
+        "actions": [
+            {
+                "config": {},
+                "name": "divvy.action.mark_non_compliant",
+                "run_when_result_is": true
+            }
+        ],
+        "filters": [
+            {
+                "config": {},
+                "name": "divvy.query.clouds_without_root_mfa"
+            }
+        ],
+        "groups": [],
+        "hookpoints": [],
+        "ondemand_enabled": true,
+        "resource_types": [
+            "divvyorganizationservice"
+        ],
+        "schedule": {
+            "_type": "Daily",
+            "time_of_day": {"_type": "TimeOfDay", "second": 0, "minute": 0, "hour": 4},
+            "exclude_days": []
+        }
+    }
+}

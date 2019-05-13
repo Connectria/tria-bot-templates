@@ -1,0 +1,34 @@
+{
+    "uuid": "tria.expired_ssl_certs",
+    "name": "Expired SSL Certificates",
+    "category": "Security",
+    "description": "Identify expired/soon to expire SSL certificates",
+    "instructions": {
+        "actions": [
+            {
+                "config": {},
+                "name": "divvy.action.mark_non_compliant",
+                "run_when_result_is": true
+            }
+        ],
+        "filters": [
+            {
+                "config": {
+                    "days": 14
+                },
+                "name": "divvy.filter.expiring_ssl_certificates"
+            }
+        ],
+        "groups": [],
+        "hookpoints": [],
+        "ondemand_enabled": true,
+        "resource_types": [
+            "servicecertificate"
+        ],
+        "schedule": {
+            "_type": "Daily",
+            "time_of_day": {"_type": "TimeOfDay", "second": 0, "minute": 0, "hour": 3},
+            "exclude_days": []
+        }
+    }
+}

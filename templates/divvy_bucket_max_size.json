@@ -1,0 +1,31 @@
+{
+    "uuid": "tria.bucket_max_size",
+    "name": "Storage Container Max Size",
+    "category": "Optimization",
+    "description": "Identify storage containters, e.g., AWS S3 buckets, that exceed the total size provided in GB (default of 1TB)",
+    "instructions": {
+        "actions": [
+            {
+                "config": {},
+                "name": "divvy.action.mark_non_compliant",
+                "run_when_result_is": true
+            }
+        ],
+        "filters": [
+            {
+                "config": {
+                    "container_size": 1024
+                },
+                "name": "divvy.filter.storage_container_size_at_least"
+            }
+        ],
+        "groups": [],
+        "hookpoints": [
+            "divvycloud.resource.modified"
+        ],
+        "ondemand_enabled": true,
+        "resource_types": [
+            "storagecontainer"
+        ]
+    }
+}

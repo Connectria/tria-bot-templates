@@ -1,0 +1,32 @@
+{
+    "uuid": "tria.orphaned_load_balancers",
+    "name": "Load balancers with no instances",
+    "category": "Optimization",
+    "description": "Identifies orphaned load balancers with no instance associations",
+    "instructions": {
+        "actions": [
+            {
+                "config": {},
+                "name": "divvy.action.mark_non_compliant",
+                "run_when_result_is": true
+            }
+        ],
+        "filters": [
+            {
+                "config": {},
+                "name": "divvy.filter.any_orphaned_elb_sans_instances"
+            }
+        ],
+        "groups": [],
+        "hookpoints": [],
+        "ondemand_enabled": true,
+        "resource_types": [
+            "loadbalancer"
+        ],
+        "schedule": {
+            "_type": "Daily",
+            "time_of_day": {"_type": "TimeOfDay", "second": 0, "minute": 0, "hour": 4},
+            "exclude_days": []
+        }
+    }
+}

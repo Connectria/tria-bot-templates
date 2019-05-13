@@ -1,0 +1,32 @@
+{
+    "uuid": "tria.orphaned_security_groups",
+    "category": "Security",
+    "name": "Resource Access Lists Orphaned",
+    "description": "Resource Access Lists unattached to other cloud resources",
+    "instructions": {
+        "actions": [
+            {
+                "config": {},
+                "name": "divvy.action.mark_non_compliant",
+                "run_when_result_is": true
+            }
+        ],
+        "filters": [
+            {
+                "config": {},
+                "name": "divvy.filter.orphaned_security_groups"
+            }
+        ],
+        "groups": [],
+        "hookpoints": [],
+        "ondemand_enabled": true,
+        "resource_types": [
+            "resourceaccesslist"
+        ],
+        "schedule": {
+            "_type": "Daily",
+            "time_of_day": {"_type": "TimeOfDay", "second": 0, "minute": 0, "hour": 4},
+            "exclude_days": []
+        }
+    }
+}

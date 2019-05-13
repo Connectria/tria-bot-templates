@@ -1,0 +1,31 @@
+{
+    "uuid": "tria.instance_authorized_key_pair",
+    "name": "Instance Using Unauthorized Root Key Pair",
+    "category": "Security",
+    "description": "Match instances based on the SSH key pair they were created with",
+    "instructions": {
+        "actions": [
+            {
+                "config": {},
+                "name": "divvy.action.mark_non_compliant",
+                "run_when_result_is": true
+            }
+        ],
+        "filters": [
+            {
+                "config": {
+                    "key_pair_names": ["default"]
+                },
+                "name": "divvy.filter.unauthorized_key_pair"
+            }
+        ],
+        "groups": [],
+        "hookpoints": [
+            "divvycloud.resource.created"
+        ],
+        "ondemand_enabled": true,
+        "resource_types": [
+            "instance"
+        ]
+    }
+}

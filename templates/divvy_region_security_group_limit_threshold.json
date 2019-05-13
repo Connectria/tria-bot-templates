@@ -1,0 +1,31 @@
+{
+    "uuid": "tria.region_security_group_limit_threshold",
+    "name": "Region Security Group Capacity Audit",
+    "category": "Optimization",
+    "description": "Match regions within 80% or more of the security group threshold",
+    "instructions": {
+        "actions": [
+            {
+                "config": {},
+                "name": "divvy.action.mark_non_compliant",
+                "run_when_result_is": true
+            }
+        ],
+        "filters": [
+            {
+                "config": {
+                    "threshold": 80
+                },
+                "name": "divvy.filter.serviceregion_security_group_limit"
+            }
+        ],
+        "groups": [],
+        "hookpoints": [
+            "divvycloud.resource.modified"
+        ],
+        "ondemand_enabled": true,
+        "resource_types": [
+            "serviceregion"
+        ]
+    }
+}

@@ -1,0 +1,40 @@
+{
+    "uuid": "tria.unsupported_db_engines",
+    "name": "Database Engine Types",
+    "category": "Best Practices",
+    "description": "Identify unsupported/blacklisted database engines",
+    "instructions": {
+        "actions": [
+            {
+                "config": {},
+                "name": "divvy.action.mark_non_compliant",
+                "run_when_result_is": false
+            }
+        ],
+        "filters": [
+            {
+                "config": {
+                    "engines": [
+                        "mysql",
+                        "aurora",
+                        "mariadb"
+                    ]
+                },
+                "name": "divvy.filter.database_engine"
+            }
+        ],
+        "groups": [],
+        "hookpoints": [
+            "divvycloud.resource.created"
+        ],
+        "ondemand_enabled": true,
+        "resource_types": [
+            "dbinstance"
+        ],
+        "schedule": {
+            "_type": "Daily",
+            "time_of_day": {"_type": "TimeOfDay", "second": 0, "minute": 0, "hour": 4},
+            "exclude_days": []
+        }
+    }
+}

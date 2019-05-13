@@ -1,0 +1,57 @@
+{
+    "uuid": "tria.sg_security_rule_ssh_open_to_world",
+    "name": "Global SSH (Security Groups)",
+    "category": "Security",
+    "description": "Identify select ports such as SSH open to the world ",
+    "instructions": {
+        "actions": [
+            {
+                "config": {},
+                "name": "divvy.action.mark_non_compliant",
+                "run_when_result_is": true
+            }
+        ],
+        "filters": [
+            {
+                "config": {
+                    "direction": [
+                        "ingress"
+                    ]
+                },
+                "name": "divvy.filter.access_rule_direction"
+            },
+            {
+                "config": {
+                    "access_list_types": [
+                        "security_group"
+                    ]
+                },
+                "name": "divvy.filter.access_list_type"
+            },
+            {
+                "config": {
+                    "ports": [
+                        "22"
+                    ]
+                },
+                "name": "divvy.filter.access_rule_ports"
+            },
+            {
+                "config": {
+                    "action": "allow"
+                },
+                "name": "divvy.filter.access_rule_action"
+            },
+            {
+                "config": {},
+                "name": "divvy.filter.network_open_to_world"
+            }
+        ],
+        "groups": [],
+        "hookpoints": ["divvycloud.resource.created"],
+        "ondemand_enabled": true,
+        "resource_types": [
+            "resourceaccesslistrule"
+        ]
+    }
+}

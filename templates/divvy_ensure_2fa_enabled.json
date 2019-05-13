@@ -1,0 +1,34 @@
+{
+    "uuid": "tria.ensure_2fa_enabled",
+    "name": "Ensure MFA enabled on user accounts",
+    "category": "Security",
+    "description": "Identify cloud users without two-factor (MFA) enabled",
+    "instructions": {
+        "actions": [
+            {
+                "config": {},
+                "name": "divvy.action.mark_non_compliant",
+                "run_when_result_is": true
+            }
+        ],
+        "filters": [
+            {
+                "config": {},
+                "name": "divvy.filter.service_user_login_profile"
+            },
+            {
+                "config": {},
+                "name": "divvy.query.users_without_mfa"
+            }
+        ],
+        "groups": [],
+        "hookpoints": [
+            "divvycloud.resource.created",
+            "divvycloud.resource.modified"
+        ],
+        "ondemand_enabled": true,
+        "resource_types": [
+            "serviceuser"
+        ]
+    }
+}

@@ -1,0 +1,36 @@
+{
+    "uuid": "tria.bucket_permissions",
+    "name": "Storage Container Permissions",
+    "category": "Security",
+    "description": "Identify storage containers, e.g., AWS S3 buckets, that expose data with permissive access lists",
+    "instructions": {
+        "actions": [
+            {
+                "config": {},
+                "name": "divvy.action.mark_non_compliant",
+                "run_when_result_is": true
+            }
+        ],
+        "filters": [
+            {
+                "config": {
+                    "permissions_list": [
+                        "FULL_CONTROL",
+                        "WRITE",
+                        "READ"
+                    ]
+                },
+                "name": "divvy.query.storage_containers_open_to_world"
+            }
+        ],
+        "groups": [],
+        "hookpoints": [
+            "divvycloud.resource.created",
+            "divvycloud.resource.modified"
+        ],
+        "ondemand_enabled": true,
+        "resource_types": [
+            "storagecontainer"
+        ]
+    }
+}

@@ -1,0 +1,34 @@
+{
+    "uuid": "tria.buckets_without_permissions",
+    "name": "Storage Containers with No Permissions",
+    "category": "Security",
+    "description": "Identify storage containers, e.g., AWS S3 buckets, without any permission sets",
+    "instructions": {
+        "actions": [
+            {
+                "config": {},
+                "name": "divvy.action.mark_non_compliant",
+                "run_when_result_is": true
+            }
+        ],
+        "filters": [
+            {
+                "config": {},
+                "name": "divvy.filter.bucket_without_permissions"
+            }
+        ],
+        "groups": [],
+        "hookpoints": [
+            "divvycloud.resource.modified"
+        ],
+        "ondemand_enabled": true,
+        "resource_types": [
+            "storagecontainer"
+        ],
+        "schedule": {
+            "_type": "Daily",
+            "time_of_day": {"_type": "TimeOfDay", "second": 0, "minute": 0, "hour": 4},
+            "exclude_days": []
+        }
+    }
+}

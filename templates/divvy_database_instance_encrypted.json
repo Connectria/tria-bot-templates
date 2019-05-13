@@ -1,0 +1,30 @@
+{
+    "uuid": "tria.database_instance_unencrypted",
+    "name": "Database Instance Not Encrypted",
+    "category": "Security",
+    "description": "Identify database instances which are not encrypted",
+    "instructions": {
+        "actions": [
+            {
+                "config": {},
+                "name": "divvy.action.mark_non_compliant",
+                "run_when_result_is": true
+            }
+        ],
+        "filters": [
+            {
+                "config": {},
+                "name": "divvy.query.database_instance_not_encrypted"
+            }
+        ],
+        "groups": [],
+        "hookpoints": [
+            "divvycloud.resource.created",
+            "divvycloud.resource.modified"
+        ],
+        "ondemand_enabled": true,
+        "resource_types": [
+            "dbinstance"
+        ]
+    }
+}

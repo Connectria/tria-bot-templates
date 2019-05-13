@@ -1,0 +1,31 @@
+{
+    "uuid": "tria.region_public_ip_limit_threshold",
+    "name": "Region Public IP Capacity Audit",
+    "category": "Optimization",
+    "description": "Match regions within 80% or more of the public IP address threshold",
+    "instructions": {
+        "actions": [
+            {
+                "config": {},
+                "name": "divvy.action.mark_non_compliant",
+                "run_when_result_is": true
+            }
+        ],
+        "filters": [
+            {
+                "config": {
+                    "threshold": 80
+                },
+                "name": "divvy.filter.serviceregion_public_ip_limit"
+            }
+        ],
+        "groups": [],
+        "hookpoints": [
+            "divvycloud.resource.modified"
+        ],
+        "ondemand_enabled": true,
+        "resource_types": [
+            "serviceregion"
+        ]
+    }
+}
